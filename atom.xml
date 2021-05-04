@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zhangyuanes</title>
+  
+  <subtitle>yanbo</subtitle>
+  <link href="https://zhangyuanes.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://zhangyuanes.github.io/"/>
+  <updated>2021-05-04T08:09:24.734Z</updated>
+  <id>https://zhangyuanes.github.io/</id>
+  
+  <author>
+    <name>zhangyuanes</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记忆卡片idea</title>
+    <link href="https://zhangyuanes.github.io/2021/05/04/kai-keng/ji-yi-qia-pian/"/>
+    <id>https://zhangyuanes.github.io/2021/05/04/kai-keng/ji-yi-qia-pian/</id>
+    <published>2021-05-04T07:55:00.000Z</published>
+    <updated>2021-05-04T08:09:24.734Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;记忆卡片project&quot;&gt;&lt;a href=&quot;#记忆卡片project&quot; class=&quot;headerlink&quot; title=&quot;记忆卡片project&quot;&gt;&lt;/a&gt;记忆卡片project&lt;/h1&gt;&lt;h2 id=&quot;需求抽取&quot;&gt;&lt;a href=&quot;#需求抽取&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="开坑" scheme="https://zhangyuanes.github.io/categories/%E5%BC%80%E5%9D%91/"/>
+    
+    
+    <category term="项目设想" scheme="https://zhangyuanes.github.io/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++刷题相关</title>
+    <link href="https://zhangyuanes.github.io/2021/05/04/ji-lu/c/c-shua-ti-xiang-guan/"/>
+    <id>https://zhangyuanes.github.io/2021/05/04/ji-lu/c/c-shua-ti-xiang-guan/</id>
+    <published>2021-05-04T07:26:00.000Z</published>
+    <updated>2021-05-04T07:51:56.311Z</updated>
+    
+    
+    <summary type="html">基础数据结构和经典算法</summary>
+    
+    
+    
+    <category term="C++" scheme="https://zhangyuanes.github.io/categories/C/"/>
+    
+    
+    <category term="C++" scheme="https://zhangyuanes.github.io/tags/C/"/>
+    
+    <category term="刷题" scheme="https://zhangyuanes.github.io/tags/%E5%88%B7%E9%A2%98/"/>
+    
+    <category term="数据结构" scheme="https://zhangyuanes.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="经典算法" scheme="https://zhangyuanes.github.io/tags/%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试笔试中知识体系构建</title>
+    <link href="https://zhangyuanes.github.io/2021/01/19/kai-keng/coding-interview/"/>
+    <id>https://zhangyuanes.github.io/2021/01/19/kai-keng/coding-interview/</id>
+    <published>2021-01-19T13:37:00.000Z</published>
+    <updated>2021-05-03T23:01:23.010Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%BF%99%E6%98%AF&quot;&gt;这是？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="知识库" scheme="https://zhangyuanes.github.io/categories/%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="面试" scheme="https://zhangyuanes.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="Algorithm" scheme="https://zhangyuanes.github.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于GitHub与PicGo的稳定快速的免费图床</title>
+    <link href="https://zhangyuanes.github.io/2021/01/19/ji-lu/bo-ke-da-jian/tu-chuang-da-jian/"/>
+    <id>https://zhangyuanes.github.io/2021/01/19/ji-lu/bo-ke-da-jian/tu-chuang-da-jian/</id>
+    <published>2021-01-19T08:34:00.000Z</published>
+    <updated>2021-05-03T23:01:23.013Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Before&quot;&gt;&lt;a href=&quot;#Before&quot; class=&quot;headerlink&quot; title=&quot;Before&quot;&gt;&lt;/a&gt;Before&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Q：什么是图床？为什么要使用图床呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;：撰写在线文章时，图片是文章表达中不可或缺的一部分。其中图片的上传和存放就是一个大问题。&lt;/p&gt;
+&lt;p&gt;有些朋友可能会把图片放到和博客同一个仓库当中，使用相对路径来引用（我以前也是这样使用的），这样后期维护起来会比较麻烦——因为这样一篇文章如果放到其他环境中图片就会由于相对路径而无法正常展示，没有什么比一个裂掉的图还让人感觉难受了。&lt;/p&gt;
+&lt;p&gt;有的朋友会在不同的平台发布同一篇文章，例如简书，csdn，b站等，这样一来每个平台都要上传图片，为了解决这些问题，比较推荐的做法是把图片统一上传到一个在线的第三方静态资源库中，这个静态资源库就是图床，其返回一个图片的URL，这样在文章中插入在线引用即可展示图片，一次书写，多处使用。&lt;/p&gt;
+&lt;p&gt;一般在商业项目中使用cdn加速，加速内容包括但不限于各种静态资源，有的需要分布式缓存等，但是考虑到个人的使用，没必要如此，使用&lt;code&gt;markdown+image url&lt;/code&gt;的方式写作文章用公开github仓库和免费cdn加速即可。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="博客搭建" scheme="https://zhangyuanes.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    
+    <category term="github" scheme="https://zhangyuanes.github.io/tags/github/"/>
+    
+    <category term="图床" scheme="https://zhangyuanes.github.io/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoBD使用</title>
+    <link href="https://zhangyuanes.github.io/2021/01/19/shu-ju-ku/mongodb/"/>
+    <id>https://zhangyuanes.github.io/2021/01/19/shu-ju-ku/mongodb/</id>
+    <published>2021-01-19T03:28:00.000Z</published>
+    <updated>2021-05-03T23:01:23.011Z</updated>
+    
+    
+    <summary type="html">与关系型数据库有些许区别，但是也意外的好用</summary>
+    
+    
+    
+    <category term="数据库" scheme="https://zhangyuanes.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="数据库" scheme="https://zhangyuanes.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="MongoDB" scheme="https://zhangyuanes.github.io/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>navigation包参数配置与原理略读</title>
+    <link href="https://zhangyuanes.github.io/2020/09/16/ji-lu/ros/navigation-bao-can-shu-pei-zhi-yu-yuan-li-lue-du/"/>
+    <id>https://zhangyuanes.github.io/2020/09/16/ji-lu/ros/navigation-bao-can-shu-pei-zhi-yu-yuan-li-lue-du/</id>
+    <published>2020-09-16T01:18:00.000Z</published>
+    <updated>2021-05-03T23:01:23.013Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Navigation包参数调优&quot;&gt;&lt;a href=&quot;#Navigation包参数调优&quot; class=&quot;headerlink&quot; title=&quot;Navigation包参数调优&quot;&gt;&lt;/a&gt;Navigation包参数调优&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="记录" scheme="https://zhangyuanes.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="ROS" scheme="https://zhangyuanes.github.io/tags/ROS/"/>
+    
+    <category term="SLAM" scheme="https://zhangyuanes.github.io/tags/SLAM/"/>
+    
+    <category term="navigation" scheme="https://zhangyuanes.github.io/tags/navigation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>APF方法的local planner</title>
+    <link href="https://zhangyuanes.github.io/2020/09/14/ji-lu/ros/apf-fang-fa-local-planner-cai-keng/"/>
+    <id>https://zhangyuanes.github.io/2020/09/14/ji-lu/ros/apf-fang-fa-local-planner-cai-keng/</id>
+    <published>2020-09-14T07:19:00.000Z</published>
+    <updated>2021-05-03T23:01:23.012Z</updated>
+    
+    
+    <summary type="html">人工势场法（Artificial Potential Field）在全局规划与局部规划的应用</summary>
+    
+    
+    
+    <category term="记录" scheme="https://zhangyuanes.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="ROS" scheme="https://zhangyuanes.github.io/tags/ROS/"/>
+    
+    <category term="SLAM" scheme="https://zhangyuanes.github.io/tags/SLAM/"/>
+    
+    <category term="人工势场法" scheme="https://zhangyuanes.github.io/tags/%E4%BA%BA%E5%B7%A5%E5%8A%BF%E5%9C%BA%E6%B3%95/"/>
+    
+    <category term="局部路径规划" scheme="https://zhangyuanes.github.io/tags/%E5%B1%80%E9%83%A8%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World to Hexo</title>
+    <link href="https://zhangyuanes.github.io/2020/09/11/hello-world/"/>
+    <id>https://zhangyuanes.github.io/2020/09/11/hello-world/</id>
+    <published>2020-09-11T12:26:00.000Z</published>
+    <updated>2021-05-03T23:01:23.009Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;说在前面&quot;&gt;&lt;a href=&quot;#说在前面&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="博客搭建" scheme="https://zhangyuanes.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    
+    <category term="Hexo" scheme="https://zhangyuanes.github.io/tags/Hexo/"/>
+    
+    <category term="Gitpage" scheme="https://zhangyuanes.github.io/tags/Gitpage/"/>
+    
+  </entry>
+  
+</feed>
