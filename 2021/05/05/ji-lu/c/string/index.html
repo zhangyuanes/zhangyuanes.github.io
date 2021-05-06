@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="navigation包参数配置与原理略读, yanbo">
+    <meta name="keywords" content="String专题, yanbo">
     <meta name="description" content="准备！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>navigation包参数配置与原理略读 | zhangyuanes</title>
+    <title>String专题 | zhangyuanes</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -300,12 +300,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">navigation包参数配置与原理略读</h1>
+                    <h1 class="description center-align post-title">String专题</h1>
                 </div>
             </div>
         </div>
@@ -430,16 +430,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ROS/">
-                                <span class="chip bg-color">ROS</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/SLAM/">
-                                <span class="chip bg-color">SLAM</span>
-                            </a>
-                        
-                            <a href="/tags/navigation/">
-                                <span class="chip bg-color">navigation</span>
+                            <a href="/tags/string/">
+                                <span class="chip bg-color">string</span>
                             </a>
                         
                     </div>
@@ -450,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
-                                记录
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -463,7 +459,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-16
+                    2021-05-05
                 </div>
                 
 
@@ -472,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    24
+                    314
                 </div>
                 
 
@@ -489,8 +485,40 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Navigation包参数调优"><a href="#Navigation包参数调优" class="headerlink" title="Navigation包参数调优"></a>Navigation包参数调优</h2><p><a target="_blank" rel="noopener" href="https://github.com/teddyluo/ROSNavGuide-Chinese">ROS 导航功能调优指南</a></p>
-<h2 id="DWAPlanner原理略读"><a href="#DWAPlanner原理略读" class="headerlink" title="DWAPlanner原理略读"></a>DWAPlanner原理略读</h2><p>动态窗口法</p>
+                <h1 id="String概念"><a href="#String概念" class="headerlink" title="String概念"></a>String概念</h1><h2 id="String-API-（C-11）"><a href="#String-API-（C-11）" class="headerlink" title="String API （C++11）"></a>String API （C++11）</h2><p><code>string</code>是在C++中才封装的内容，在C中只能使用<code>char* []</code>或者<code>const char* []</code>,但是操作繁琐很容易出错。</p>
+<p>String 的一些比较重要的API：</p>
+<ul>
+<li>c_str ： 返回字符串的不可修改的 C 字符数组版本。该指针有范围 [c_str(); c_str() + size()] 为合法，且其中的值对应存储于字符串的值，且在最后位置有个附加的空终止字符。</li>
+</ul>
+<h3 id="字符查找"><a href="#字符查找" class="headerlink" title="字符查找"></a>字符查找</h3><ul>
+<li>find：于字符串中寻找字符</li>
+<li>rfind：寻找子串的最后一次出现</li>
+<li>find_first_of：寻找字符的首次出现</li>
+<li>find_first_not_of: 寻找字符的首次缺失</li>
+<li>find_last_of: 寻找字符的最后一次出现</li>
+<li>find_last_not_of:寻找字符的最后一次缺失</li>
+</ul>
+<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><blockquote>
+<p>转换字符串为有符号整数<br>stoi<br>stol<br>stoll</p>
+</blockquote>
+<blockquote>
+<p>转换字符串为无符号整数<br>stoul<br>stoull</p>
+</blockquote>
+<blockquote>
+<p>转换字符串为浮点值<br>stof<br>stod<br>stold</p>
+</blockquote>
+<blockquote>
+<p>转换整数或浮点值为 string,wstring<br>to_string<br>to_wstring</p>
+</blockquote>
+<h2 id="String-基本考察类型"><a href="#String-基本考察类型" class="headerlink" title="String 基本考察类型"></a>String 基本考察类型</h2><h3 id="顺序-——-翻转，反转"><a href="#顺序-——-翻转，反转" class="headerlink" title="顺序 —— 翻转，反转"></a>顺序 —— 翻转，反转</h3><h3 id="匹配-——-子串，子序列，模式匹配"><a href="#匹配-——-子串，子序列，模式匹配" class="headerlink" title="匹配 —— 子串，子序列，模式匹配"></a>匹配 —— 子串，子序列，模式匹配</h3><h3 id="比较-——-字典序"><a href="#比较-——-字典序" class="headerlink" title="比较 —— 字典序"></a>比较 —— 字典序</h3><h3 id="回文"><a href="#回文" class="headerlink" title="回文"></a>回文</h3><h3 id="统计-——-出现次数，位置，条件，包含"><a href="#统计-——-出现次数，位置，条件，包含" class="headerlink" title="统计 —— 出现次数，位置，条件，包含"></a>统计 —— 出现次数，位置，条件，包含</h3><h2 id="典型题目"><a href="#典型题目" class="headerlink" title="典型题目"></a>典型题目</h2><blockquote>
+<p>最长回文子串 DP</p>
+</blockquote>
+<blockquote>
+<p>最长不重复子串 滑动窗口</p>
+</blockquote>
+<blockquote>
+<p>和不小于K的最短子串 前缀叔祖+单调双端队列</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -516,7 +544,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhangyuanes.github.io/2020/09/16/ji-lu/ros/navigation-bao-can-shu-pei-zhi-yu-yuan-li-lue-du/">https://zhangyuanes.github.io/2020/09/16/ji-lu/ros/navigation-bao-can-shu-pei-zhi-yu-yuan-li-lue-du/</a>
+                    <a href="https://zhangyuanes.github.io/2021/05/05/ji-lu/c/string/">https://zhangyuanes.github.io/2021/05/05/ji-lu/c/string/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,16 +582,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ROS/">
-                                    <span class="chip bg-color">ROS</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
-                                <a href="/tags/SLAM/">
-                                    <span class="chip bg-color">SLAM</span>
-                                </a>
-                            
-                                <a href="/tags/navigation/">
-                                    <span class="chip bg-color">navigation</span>
+                                <a href="/tags/string/">
+                                    <span class="chip bg-color">string</span>
                                 </a>
                             
                         </div>
@@ -998,80 +1022,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/19/shu-ju-ku/mongodb/">
+                <a href="/2021/05/06/ji-lu/qi-ta/proteach/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="MongoBD使用">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="操作系统助教两三事">
                         
-                        <span class="card-title">MongoBD使用</span>
+                        <span class="card-title">操作系统助教两三事</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MongoDB数据库安装官网 选择合适的版本下载.msi文件安装即可，或者下载解压版本
-命令行下运行 MongoDB为了从命令提示符下运行 MongoDB 服务器，必须从 MongoDB 目录的 bin 目录中执行 mongod.exe 文
+                            操作系统助教两三事实验内容操作系统总共有4次实验，对应操作系统的不同阶段的几次实验内容。
+相关工作本次实验内容的分发本着不跟人打交道就是降低难度的准则，说服老师用在线仓库进行管理。
+将实验内容先梳理框架，然后分批次放在远程仓库中，提供实验手
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-06
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                    <a href="/tags/MongoDB/">
-                        <span class="chip bg-color">MongoDB</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/09/14/ji-lu/ros/apf-fang-fa-local-planner-cai-keng/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="APF方法的local planner">
-                        
-                        <span class="card-title">APF方法的local planner</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            人工势场法（Artificial Potential Field）移动机器人在给定初始点和最终点的情况下，在不与障碍物发生碰撞的情况下执行由自动路径规划模块规划出的路径到达最终点。
-在实际情况下，部分或全部环境未知，路径规划通常使用基于行为
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1087,20 +1058,63 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ROS/">
-                        <span class="chip bg-color">ROS</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
-                    <a href="/tags/SLAM/">
-                        <span class="chip bg-color">SLAM</span>
+                    <a href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="chip bg-color">日常</span>
                     </a>
                     
-                    <a href="/tags/%E4%BA%BA%E5%B7%A5%E5%8A%BF%E5%9C%BA%E6%B3%95/">
-                        <span class="chip bg-color">人工势场法</span>
-                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/05/04/kai-keng/ji-yi-qia-pian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="记忆卡片idea">
+                        
+                        <span class="card-title">记忆卡片idea</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            记忆卡片project需求抽取Client功能点1、响应式布局，多端使用——需要在PC，移动端自由适配
+2、问题卡片展示：
+卡片展示——在卡片页面中展示卡片问题，记忆层次按钮，问题tags，关联问题，以及上一题、下一题、随机一题跳转按钮，侧
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%9D%91/" class="post-category">
+                                    开坑
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B1%80%E9%83%A8%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">局部路径规划</span>
+                    <a href="/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E6%83%B3/">
+                        <span class="chip bg-color">项目设想</span>
                     </a>
                     
                 </div>
