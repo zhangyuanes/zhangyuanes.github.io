@@ -513,26 +513,26 @@ scan_time <span class="token punctuation">(</span>float32<span class="token punc
 range_min <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 最小的测量距离 <span class="token punctuation">[</span>米<span class="token punctuation">]</span>
 range_max <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 最大的测量距离 <span class="token punctuation">[</span>米<span class="token punctuation">]</span></code></pre>
 <p>在world中拿到goal（目标点）和机器人所在位置坐标，分别为goal_（x，y），pose_（x，y）。然后计算goal与pose的欧式距离r，再使用atan2（dy，dx）计算出目标点相对当前位置的角度theta_goal，单位 [弧度]，其中dy = goal_（y）-pose_（y），dx同理。这里theta_goal是在世界坐标系中的，而非机器人坐标系。</p>
-<pre class=" language-c++"><code class="language-c++">pose_x = goal_.pose.position.x - pose_.pose.position.x;
-pose_y = goal_.pose.position.y - pose_.pose.position.y;
-float theta_goal = atan2(pose_y, pose_x);
-float r = sqrt(pow(pose_x, 2) + pow(pose_y, 2));</code></pre>
+<pre class=" language-cpp"><code class="language-cpp">pose_x <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+pose_y <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token keyword">float</span> theta_goal <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> pose_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> r <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>pose_x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">pow</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="引力"><a href="#引力" class="headerlink" title="引力"></a>引力</h3><p>引力场计算公式：</p>
 <p>$$<br>U_{att}(q) = \frac12\xi r^2<br>$$</p>
 <p>引力场下的引力计算为：</p>
 <p>$$<br>F_{att} = -\Delta U_{att}(q) = \xi r<br>$$</p>
 <p>这里将系数设置为GOAL_FORCE（default=1），需要进行世界坐标系的xy分解：</p>
-<pre class=" language-c++"><code class="language-c++">//常量定义
-#define PI 3.14
-#define GOAL_FORCE 1      // 目标吸引力因子
-...
-pose_x = goal_.pose.position.x - pose_.pose.position.x;
-pose_y = goal_.pose.position.y - pose_.pose.position.y;
-float theta_goal = atan2(pose_y, pose_x);
-float r = sqrt(pow(pose_x, 2) + pow(pose_y, 2));
-float goal_force = GOAL_FORCE * r;
-float goal_x = goal_force * cos(theta_goal);
-float goal_y = goal_force * sin(theta_goal);</code></pre>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//常量定义</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> PI 3.14</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> GOAL_FORCE 1      </span><span class="token comment" spellcheck="true">// 目标吸引力因子</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+pose_x <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+pose_y <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token keyword">float</span> theta_goal <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> pose_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> r <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>pose_x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">pow</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_force <span class="token operator">=</span> GOAL_FORCE <span class="token operator">*</span> r<span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_x <span class="token operator">=</span> goal_force <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_y <span class="token operator">=</span> goal_force <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>这里实现的上是冗余的，所以可以进行简化，直接写成引力计算的公式，但是后面需要可视化引力，这里就保留较为复杂的写法。</p>
 <h3 id="斥力"><a href="#斥力" class="headerlink" title="斥力"></a>斥力</h3><p>斥力场计算公式：</p>
 <p>$$<br>U_{rep}(q) = \frac12 \eta \left( \frac{1}{\rho (q,q_{obs})} - \frac1{\rho_0} \right)^2 \rho ^n(q,q_{goal}), \rho (q,q_{obs}) \leq \rho_0<br>$$</p>
@@ -546,39 +546,39 @@ float goal_y = goal_force * sin(theta_goal);</code></pre>
 <li>遍历激光数据，找到距离机器人最近的障碍物距离 temp_min，以及其对应的range[i]的下标 temp_min_i。</li>
 <li>然后计算这个最近点对机器人的斥力。采用传统斥力公式。</li>
 </ol>
-<pre class=" language-c++"><code class="language-c++">//常量定义
-#define MAX_RANGE 0.3 //机器人探测半径，也可以理解为障碍物影响距离
-#define ROBOT_RADIUS 0.10 //机器人半径，默认机器人为圆形
-#define REPULSE_FORCE 0.1  // 斥力因子
-...
-float temp_min = MAX_RANGE; //获得与机器人最近的障碍物距离来控制速度减小
-int temp_min_i = -1; //对应最小距离的range下标
-// 计算激光探测到的力（障碍物的斥力），分解到x，y方向（世界坐标系）
-float repulsion_resultant_x = 0;
-float repulsion_resultant_y = 0;
-// laser_msg_这里是激光数据的数据结构，定义为sensor_msgs::LaserScan
-int total_points = (laser_msg_.angle_max - laser_msg_.angle_min) / laser_msg_.angle_increment;
-for (int i = 0; i < total_points; i++)
-&#123;
-  if (laser_msg_.ranges[i] > MAX_RANGE || laser_msg_.ranges[i] == 0)
-    continue;
-  if (laser_msg_.ranges[i] > ROBOT_RADIUS)
-  &#123;
-    float r_laser = laser_msg_.ranges[i] - ROBOT_RADIUS;
-    if (r_laser < temp_min) &#123;
-      temp_min = r_laser;
-      temp_min_i = i;
-    &#125;
-  &#125;
-&#125;
-// 如果存在最近障碍物，将最近障碍物角度 laser_radian_global 转换到世界坐标系：先计算机器人坐标系坐标偏转 laser_radian，加上yaw角度（这里yaw角度放在了位姿的z轴中，因为机器人不存在高度上的移动，所以简化和充分利用pose数据结构将yaw放在了 pose_.pose.position.z中）
-// 之后使用斥力公式计算，这里为了表示方向相反而乘上了负号
-if (temp_min_i != -1) &#123;
-  float laser_radian = laser_msg_.angle_min + laser_msg_.angle_increment * temp_min_i;
-  float laser_radian_global = laser_radian + pose_.pose.position.z;
-  repulsion_resultant_x = -REPULSE_FORCE * cos(laser_radian_global) / pow(temp_min, 2);
-  repulsion_resultant_y = -REPULSE_FORCE * sin(laser_radian_global) / pow(temp_min, 2);
-&#125;</code></pre>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//常量定义</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> MAX_RANGE 0.3 </span><span class="token comment" spellcheck="true">//机器人探测半径，也可以理解为障碍物影响距离</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> ROBOT_RADIUS 0.10 </span><span class="token comment" spellcheck="true">//机器人半径，默认机器人为圆形</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> REPULSE_FORCE 0.1  </span><span class="token comment" spellcheck="true">// 斥力因子</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">float</span> temp_min <span class="token operator">=</span> MAX_RANGE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获得与机器人最近的障碍物距离来控制速度减小</span>
+<span class="token keyword">int</span> temp_min_i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//对应最小距离的range下标</span>
+<span class="token comment" spellcheck="true">// 计算激光探测到的力（障碍物的斥力），分解到x，y方向（世界坐标系）</span>
+<span class="token keyword">float</span> repulsion_resultant_x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> repulsion_resultant_y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// laser_msg_这里是激光数据的数据结构，定义为sensor_msgs::LaserScan</span>
+<span class="token keyword">int</span> total_points <span class="token operator">=</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>angle_max <span class="token operator">-</span> laser_msg_<span class="token punctuation">.</span>angle_min<span class="token punctuation">)</span> <span class="token operator">/</span> laser_msg_<span class="token punctuation">.</span>angle_increment<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total_points<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> MAX_RANGE <span class="token operator">||</span> laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ROBOT_RADIUS<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> r_laser <span class="token operator">=</span> laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> ROBOT_RADIUS<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r_laser <span class="token operator">&lt;</span> temp_min<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      temp_min <span class="token operator">=</span> r_laser<span class="token punctuation">;</span>
+      temp_min_i <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 如果存在最近障碍物，将最近障碍物角度 laser_radian_global 转换到世界坐标系：先计算机器人坐标系坐标偏转 laser_radian，加上yaw角度（这里yaw角度放在了位姿的z轴中，因为机器人不存在高度上的移动，所以简化和充分利用pose数据结构将yaw放在了 pose_.pose.position.z中）</span>
+<span class="token comment" spellcheck="true">// 之后使用斥力公式计算，这里为了表示方向相反而乘上了负号</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>temp_min_i <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">float</span> laser_radian <span class="token operator">=</span> laser_msg_<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> laser_msg_<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> temp_min_i<span class="token punctuation">;</span>
+  <span class="token keyword">float</span> laser_radian_global <span class="token operator">=</span> laser_radian <span class="token operator">+</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z<span class="token punctuation">;</span>
+  repulsion_resultant_x <span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>laser_radian_global<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>temp_min<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  repulsion_resultant_y <span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>laser_radian_global<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>temp_min<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h3 id="合力"><a href="#合力" class="headerlink" title="合力"></a>合力</h3><p>力的合成高中物理，无需赘述。合成之后如果合力的方向与目标引力的方向一致，可能落入局部最小，需要给予扰动力让其逃逸。</p>
 <pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 计算在x，y轴方向上的合力：斥合力+吸引力, attention: *r</span>
 <span class="token keyword">float</span> force_x <span class="token operator">=</span> repulsion_resultant_x <span class="token operator">*</span> r <span class="token operator">+</span> goal_x<span class="token punctuation">;</span>
@@ -586,18 +586,18 @@ if (temp_min_i != -1) &#123;
 <span class="token comment" spellcheck="true">// x，y分量合成合力</span>
 <span class="token comment" spellcheck="true">// force = sqrt(pow(force_x, 2) + pow(force_y, 2));</span>
 theta <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>force_y<span class="token punctuation">,</span> force_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>theta_goal <span class="token operator">==</span> theta<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>theta_goal <span class="token operator">==</span> theta<span class="token punctuation">)</span><span class="token punctuation">{</span>
   theta <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>此外机器人移动发布的消息类型为cmd_vel需要指定线速度和角速度，所以需要进行合力到速度的映射。角速度需要优先考虑，因为机器人的旋转是其改变方向避开障碍物的第一步，这里就是计算出合力角度 theta 和 yaw的差值角度，假设时间间隔dt = 1来将其直接设置为角速度 angular.z；线速度如果变动不光滑在初步实现demo的时候也不用太过在意，直接写死简化处理方式（注释代码段，这个地方其实也有bug，因为速度的线性减小会逐步累加而导致最后速度很小，需要额外增加恢复函数）。</p>
 <pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 角度变化并放缩到-PI到PI之间</span>
 <span class="token keyword">float</span> radian_speed <span class="token operator">=</span> theta <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z<span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>radian_speed <span class="token operator">></span> PI<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>radian_speed <span class="token operator">></span> PI<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   radian_speed <span class="token operator">=</span> radian_speed <span class="token operator">-</span> <span class="token number">2</span><span class="token operator">*</span>PI<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>radian_speed <span class="token operator">&lt;</span> <span class="token operator">-</span>PI<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>radian_speed <span class="token operator">&lt;</span> <span class="token operator">-</span>PI<span class="token punctuation">)</span><span class="token punctuation">{</span>
   radian_speed <span class="token operator">=</span> <span class="token number">2</span><span class="token operator">*</span>PI <span class="token operator">+</span> radian_speed<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 geometry_msgs<span class="token punctuation">:</span><span class="token punctuation">:</span>Twist vel_msg<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// float cur_vx = 0.5;</span>
     <span class="token comment" spellcheck="true">// float new_vx = cur_vx * temp_min / MAX_RANGE; // 越靠近物体速度越小</span>
@@ -617,39 +617,39 @@ geometry_msgs<span class="token punctuation">:</span><span class="token punctuat
 <li>线速度与角速度的平滑函数很复杂，之前尝试使用加速度与角加速度去实现速度映射，发现不可行，机器人的运动无法预测。</li>
 <li>善用可视化——在最开始遇到机器人的运动无法预测没有想到可视化，只是将数据打印了出来，然后使用rqt工具观察，发现角速度的变化是正常的，而合力很小，斥力很大，大的离谱，这时候合力对机器人的运动起不到影响作用，斥力直接影响合力方向，后面查看代码时候发现是这一段：</li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total_points<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total_points<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> MAX_RANGE <span class="token operator">||</span> scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    
                 <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ROBOT_RADIUS<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ROBOT_RADIUS<span class="token punctuation">)</span><span class="token punctuation">{</span>
                 float r_laser <span class="token operator">=</span> scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> ROBOT_RADIUS<span class="token punctuation">;</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>r_laser <span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>r_laser <span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
                     repulsion_resultant_x <span class="token operator">+</span><span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> scan_filtered<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>r_laser<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                     repulsion_resultant_y <span class="token operator">+</span><span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> scan_filtered<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>r_laser<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+                <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>上一段代码是有几个错误的，包括之前说的计算出theta为世界坐标系中的弧度值，这里使用机器人坐标系的角度分解是错误的。但是我想说的重点在斥力计算的部分：这里代码含义为只要在机器人探测范围内有效的障碍物的粒子点都参与斥力计算，而且斥力是加和（+=）的，导致在机器人距离物体很近的时候，粒子很多，每个粒子都提供斥力，累和数值很大，所以后之后绝得将其修改为了一个粒子的影响。<br>这个问题是在进行引力、斥力和合力的可视化之后才发现的，可视化的部分代码如下：将力的数据处理成PoseStamped格式进行发布，只显示方向，大小从topic输出的数值来看。pose中最重要的方向orientation，将theta转化为四元数输出，同理对引力theta_goal、斥力atan2(repulsion_resultant_y, repulsion_resultant_x)也是一样的做法。</p>
-<pre class=" language-c++"><code class="language-c++">std_msgs::Float32 force_msg;
-force_msg.data = force_x;
-force_x_pub_.publish(force_msg);
-force_msg.data = force_y;
-force_y_pub_.publish(force_msg);
-force_msg.data = radian_speed;
-w_pub_.publish(force_msg);
-geometry_msgs::PoseStamped force_dir_msg;
-force_dir_msg.header.frame_id = "map";
-force_dir_msg.header.stamp = ros::Time::now();
-force_dir_msg.pose.position.x = pose_.pose.position.x;
-force_dir_msg.pose.position.y = pose_.pose.position.y;
-force_dir_msg.pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, theta);
-force_direction_pub_.publish(force_dir_msg);
-force_dir_msg.pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, theta_goal);
-att_force_direction_pub_.publish(force_dir_msg);
-// 斥力有才发布
-if (repulsion_resultant_y != 0 || repulsion_resultant_x != 0) &#123;
-  force_dir_msg.pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, atan2(repulsion_resultant_y, repulsion_resultant_x));
-  rep_force_direction_pub_.publish(force_dir_msg);
-&#125;</code></pre>
+<pre class=" language-cpp"><code class="language-cpp">std_msgs<span class="token operator">::</span>Float32 force_msg<span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> force_x<span class="token punctuation">;</span>
+force_x_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> force_y<span class="token punctuation">;</span>
+force_y_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> radian_speed<span class="token punctuation">;</span>
+w_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+geometry_msgs<span class="token operator">::</span>PoseStamped force_dir_msg<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> <span class="token string">"map"</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>header<span class="token punctuation">.</span>stamp <span class="token operator">=</span> ros<span class="token operator">::</span>Time<span class="token operator">::</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> theta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+att_force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 斥力有才发布</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>repulsion_resultant_y <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">||</span> repulsion_resultant_x <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">atan2</span><span class="token punctuation">(</span>repulsion_resultant_y<span class="token punctuation">,</span> repulsion_resultant_x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  rep_force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>在rviz中展示的效果如下：<br><img src="https://cdn.jsdelivr.net/gh/zhangyuanes/thirdPic/img/apf-rviz.jpg" alt="apf-rviz"></p>
 
             </div>
@@ -1508,7 +1508,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28k</span>&nbsp;字
+                class="white-color">96.3k</span>&nbsp;字
             
             
             
