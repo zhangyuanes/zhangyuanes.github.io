@@ -1,0 +1,1677 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="APF方法的local planner, yanbo">
+    <meta name="description" content="准备！">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>APF方法的local planner | zhangyuanes</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.1.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css"><link rel="alternate" href="/atom.xml" title="zhangyuanes" type="application/atom+xml">
+</head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zhangyuanes</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zhangyuanes</div>
+        <div class="logo-desc">
+            
+            准备！
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/zhangyuanes" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zhangyuanes" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">APF方法的local planner</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/ROS/">
+                                <span class="chip bg-color">ROS</span>
+                            </a>
+                        
+                            <a href="/tags/SLAM/">
+                                <span class="chip bg-color">SLAM</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BA%BA%E5%B7%A5%E5%8A%BF%E5%9C%BA%E6%B3%95/">
+                                <span class="chip bg-color">人工势场法</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B1%80%E9%83%A8%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">局部路径规划</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                记录
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-09-14
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="人工势场法（Artificial-Potential-Field）"><a href="#人工势场法（Artificial-Potential-Field）" class="headerlink" title="人工势场法（Artificial Potential Field）"></a>人工势场法（Artificial Potential Field）</h2><p>移动机器人在给定初始点和最终点的情况下，在不与障碍物发生碰撞的情况下执行由自动路径规划模块规划出的路径到达最终点。</p>
+<p>在实际情况下，部分或全部环境未知，路径规划通常使用基于行为的方法（Behavior based methods）和使用智能控制技术的方法（methods using Intelligent Control Techniques）。</p>
+<p>已知环境中的路径规划包括生成供机器人遵循的路径，前提是该环境的整体（静态或动态）都是已知的。在这种情况下，方法可以被大致分为两类：最小化代价方法，势场法。最小化代价方法中一个很典型的算法就是的启发式A*算法。</p>
+<p>人工势场法是势场法中避障规划路径的常见方法。人工势场法在障碍物周围使用斥力场来使得机器人离开（不碰撞），目标点周围使用吸引力场来吸引机器人。因此，机器人受到的总力等于总场势梯度的负值（矢量）。这样的合力驱动机器人朝着目标点的位置下降，直到其到达目标点或者停止（可能陷入局部最小，类似于梯度下降）。</p>
+<p>人工势场法的主要问题以下几点：</p>
+<ol>
+<li>距离很近的障碍物之间没有通道（不能通过）；</li>
+<li>在狭小环境下，机器人可能陷入平衡位置，并且会振荡或以闭环运行；</li>
+<li>GNRON（Goals nonreachable with obstacle near by）无法到达障碍物附近的目标。</li>
+</ol>
+<h2 id="手动实现APF"><a href="#手动实现APF" class="headerlink" title="手动实现APF"></a>手动实现APF</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>在激光的回调函数中调用，拿到Lansecan的数据，数据结构如下：</p>
+<pre class=" language-bash"><code class="language-bash">sensor_msgs/LaserScan
+angle_min <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> scan 的开始角度 <span class="token punctuation">[</span>弧度<span class="token punctuation">]</span>
+angle_max <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> scan 的结束角度 <span class="token punctuation">[</span>弧度<span class="token punctuation">]</span>
+angle_increment <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 测量的角度间的距离 <span class="token punctuation">[</span>弧度<span class="token punctuation">]</span>
+time_increment <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 测量间的时间 <span class="token punctuation">[</span>秒<span class="token punctuation">]</span> – 如果扫描仪在移动,这将用于插入 3D 点的位置
+scan_time <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 扫描间的时间 <span class="token punctuation">[</span>秒<span class="token punctuation">]</span>
+range_min <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 最小的测量距离 <span class="token punctuation">[</span>米<span class="token punctuation">]</span>
+range_max <span class="token punctuation">(</span>float32<span class="token punctuation">)</span> 最大的测量距离 <span class="token punctuation">[</span>米<span class="token punctuation">]</span></code></pre>
+<p>在world中拿到goal（目标点）和机器人所在位置坐标，分别为goal_（x，y），pose_（x，y）。然后计算goal与pose的欧式距离r，再使用atan2（dy，dx）计算出目标点相对当前位置的角度theta_goal，单位 [弧度]，其中dy = goal_（y）-pose_（y），dx同理。这里theta_goal是在世界坐标系中的，而非机器人坐标系。</p>
+<pre class=" language-cpp"><code class="language-cpp">pose_x <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+pose_y <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token keyword">float</span> theta_goal <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> pose_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> r <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>pose_x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">pow</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="引力"><a href="#引力" class="headerlink" title="引力"></a>引力</h3><p>引力场计算公式：</p>
+<p>$$<br>U_{att}(q) = \frac12\xi r^2<br>$$</p>
+<p>引力场下的引力计算为：</p>
+<p>$$<br>F_{att} = -\Delta U_{att}(q) = \xi r<br>$$</p>
+<p>这里将系数设置为GOAL_FORCE（default=1），需要进行世界坐标系的xy分解：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//常量定义</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> PI 3.14</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> GOAL_FORCE 1      </span><span class="token comment" spellcheck="true">// 目标吸引力因子</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+pose_x <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+pose_y <span class="token operator">=</span> goal_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token keyword">float</span> theta_goal <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> pose_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> r <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>pose_x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">pow</span><span class="token punctuation">(</span>pose_y<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_force <span class="token operator">=</span> GOAL_FORCE <span class="token operator">*</span> r<span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_x <span class="token operator">=</span> goal_force <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> goal_y <span class="token operator">=</span> goal_force <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>这里实现的上是冗余的，所以可以进行简化，直接写成引力计算的公式，但是后面需要可视化引力，这里就保留较为复杂的写法。</p>
+<h3 id="斥力"><a href="#斥力" class="headerlink" title="斥力"></a>斥力</h3><p>斥力场计算公式：</p>
+<p>$$<br>U_{rep}(q) = \frac12 \eta \left( \frac{1}{\rho (q,q_{obs})} - \frac1{\rho_0} \right)^2 \rho ^n(q,q_{goal}), \rho (q,q_{obs}) \leq \rho_0<br>$$</p>
+<p>$$<br>U_{rep}(q) = 0, \rho (q,q_{obs}) &gt; \rho_0<br>$$</p>
+<p>这里需要设置两个系数，参数n和阈值p0,在原有的斥力场中加上目标点和机器人距离的影响，来缓解GNRON问题。参数n一般设置为2，阈值p0是障碍物的影响半径，如果机器人距离障碍物一定距离，即使可以看见障碍物，也对机器人没有影响。</p>
+<p>在斥力影响不为0时刻的斥力计算公式：</p>
+<p>$$<br>F_{rep}(q) = -\Delta U_{rep}(q) = F_{rep1}n_{OR} + F_{req2}n_{RG} , \rho (q,q_{obs}) \leq \rho_0<br>$$</p>
+<p>$$<br>F_{rep1}=\eta \left( \frac1{\rho (q,q_{obs})} - \frac1{\rho_0} \right) \frac{\rho ^n(q,q_{goal})}{\rho (q,q_{obs})},F_{req2}=\frac{n}{2}\eta \left( \frac1{\rho (q,q_{obs})} - \frac1{\rho_0} \right)^2\rho ^{n-1}(q,q_{goal})<br>$$</p>
+<p>这里对标在激光中的实现还是有些问题，所以采用了一种另一种处理方式：</p>
+<ol>
+<li>遍历激光数据，找到距离机器人最近的障碍物距离 temp_min，以及其对应的range[i]的下标 temp_min_i。</li>
+<li>然后计算这个最近点对机器人的斥力。采用传统斥力公式。</li>
+</ol>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//常量定义</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> MAX_RANGE 0.3 </span><span class="token comment" spellcheck="true">//机器人探测半径，也可以理解为障碍物影响距离</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> ROBOT_RADIUS 0.10 </span><span class="token comment" spellcheck="true">//机器人半径，默认机器人为圆形</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> REPULSE_FORCE 0.1  </span><span class="token comment" spellcheck="true">// 斥力因子</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">float</span> temp_min <span class="token operator">=</span> MAX_RANGE<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获得与机器人最近的障碍物距离来控制速度减小</span>
+<span class="token keyword">int</span> temp_min_i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//对应最小距离的range下标</span>
+<span class="token comment" spellcheck="true">// 计算激光探测到的力（障碍物的斥力），分解到x，y方向（世界坐标系）</span>
+<span class="token keyword">float</span> repulsion_resultant_x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> repulsion_resultant_y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// laser_msg_这里是激光数据的数据结构，定义为sensor_msgs::LaserScan</span>
+<span class="token keyword">int</span> total_points <span class="token operator">=</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>angle_max <span class="token operator">-</span> laser_msg_<span class="token punctuation">.</span>angle_min<span class="token punctuation">)</span> <span class="token operator">/</span> laser_msg_<span class="token punctuation">.</span>angle_increment<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total_points<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> MAX_RANGE <span class="token operator">||</span> laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ROBOT_RADIUS<span class="token punctuation">)</span>
+  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> r_laser <span class="token operator">=</span> laser_msg_<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> ROBOT_RADIUS<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r_laser <span class="token operator">&lt;</span> temp_min<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      temp_min <span class="token operator">=</span> r_laser<span class="token punctuation">;</span>
+      temp_min_i <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 如果存在最近障碍物，将最近障碍物角度 laser_radian_global 转换到世界坐标系：先计算机器人坐标系坐标偏转 laser_radian，加上yaw角度（这里yaw角度放在了位姿的z轴中，因为机器人不存在高度上的移动，所以简化和充分利用pose数据结构将yaw放在了 pose_.pose.position.z中）</span>
+<span class="token comment" spellcheck="true">// 之后使用斥力公式计算，这里为了表示方向相反而乘上了负号</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>temp_min_i <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">float</span> laser_radian <span class="token operator">=</span> laser_msg_<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> laser_msg_<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> temp_min_i<span class="token punctuation">;</span>
+  <span class="token keyword">float</span> laser_radian_global <span class="token operator">=</span> laser_radian <span class="token operator">+</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z<span class="token punctuation">;</span>
+  repulsion_resultant_x <span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>laser_radian_global<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>temp_min<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  repulsion_resultant_y <span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>laser_radian_global<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>temp_min<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<h3 id="合力"><a href="#合力" class="headerlink" title="合力"></a>合力</h3><p>力的合成高中物理，无需赘述。合成之后如果合力的方向与目标引力的方向一致，可能落入局部最小，需要给予扰动力让其逃逸。</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 计算在x，y轴方向上的合力：斥合力+吸引力, attention: *r</span>
+<span class="token keyword">float</span> force_x <span class="token operator">=</span> repulsion_resultant_x <span class="token operator">*</span> r <span class="token operator">+</span> goal_x<span class="token punctuation">;</span>
+<span class="token keyword">float</span> force_y <span class="token operator">=</span> repulsion_resultant_y <span class="token operator">*</span> r <span class="token operator">+</span> goal_y<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// x，y分量合成合力</span>
+<span class="token comment" spellcheck="true">// force = sqrt(pow(force_x, 2) + pow(force_y, 2));</span>
+theta <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>force_y<span class="token punctuation">,</span> force_x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>theta_goal <span class="token operator">==</span> theta<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  theta <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<p>此外机器人移动发布的消息类型为cmd_vel需要指定线速度和角速度，所以需要进行合力到速度的映射。角速度需要优先考虑，因为机器人的旋转是其改变方向避开障碍物的第一步，这里就是计算出合力角度 theta 和 yaw的差值角度，假设时间间隔dt = 1来将其直接设置为角速度 angular.z；线速度如果变动不光滑在初步实现demo的时候也不用太过在意，直接写死简化处理方式（注释代码段，这个地方其实也有bug，因为速度的线性减小会逐步累加而导致最后速度很小，需要额外增加恢复函数）。</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 角度变化并放缩到-PI到PI之间</span>
+<span class="token keyword">float</span> radian_speed <span class="token operator">=</span> theta <span class="token operator">-</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>radian_speed <span class="token operator">></span> PI<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  radian_speed <span class="token operator">=</span> radian_speed <span class="token operator">-</span> <span class="token number">2</span><span class="token operator">*</span>PI<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>radian_speed <span class="token operator">&lt;</span> <span class="token operator">-</span>PI<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  radian_speed <span class="token operator">=</span> <span class="token number">2</span><span class="token operator">*</span>PI <span class="token operator">+</span> radian_speed<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+geometry_msgs<span class="token punctuation">:</span><span class="token punctuation">:</span>Twist vel_msg<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// float cur_vx = 0.5;</span>
+    <span class="token comment" spellcheck="true">// float new_vx = cur_vx * temp_min / MAX_RANGE; // 越靠近物体速度越小</span>
+    vel_msg<span class="token punctuation">.</span>linear<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.35</span><span class="token punctuation">;</span>
+    vel_msg<span class="token punctuation">.</span>linear<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    vel_msg<span class="token punctuation">.</span>linear<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    vel_msg<span class="token punctuation">.</span>angular<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    vel_msg<span class="token punctuation">.</span>angular<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    vel_msg<span class="token punctuation">.</span>angular<span class="token punctuation">.</span>z <span class="token operator">=</span> radian_speed<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 角度充当角速度，dt=1</span>
+    vel_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>vel_msg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>在初步需要实现代码到系统中的时候遇到了许多问题和坑：</p>
+<ul>
+<li>不需要发布点云——最开始的时候将激光数据发布到点云，后来发现这个回调只需要计算合力大小与方向即可，不需要发布点云，删去这个部分代码</li>
+<li>atan2方法的参数为y，x——注意这里的顺序是先y后x，我不小心写成了atan2（x，y）导致角度计算不正确，花了好大力气一步步审查代码才发现，函数使用请细心；</li>
+<li>计算出theta为世界坐标系中的弧度值——因为LaserScan中的angle_min与angle_max都是在世界坐标系下的弧度值，且已知angle_increment可以直接计算，但是不能直接使用这个做x，y分解的角度，因为引力是分解到世界坐标系中的，所以斥力以应该如此，需要在theta与yaw做运算和之后才行</li>
+<li>启发式算法以计算角度差值代替角速度值</li>
+<li>线速度与角速度的平滑函数很复杂，之前尝试使用加速度与角加速度去实现速度映射，发现不可行，机器人的运动无法预测。</li>
+<li>善用可视化——在最开始遇到机器人的运动无法预测没有想到可视化，只是将数据打印了出来，然后使用rqt工具观察，发现角速度的变化是正常的，而合力很小，斥力很大，大的离谱，这时候合力对机器人的运动起不到影响作用，斥力直接影响合力方向，后面查看代码时候发现是这一段：</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total_points<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> MAX_RANGE <span class="token operator">||</span> scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ROBOT_RADIUS<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                float r_laser <span class="token operator">=</span> scan_filtered<span class="token punctuation">.</span>ranges<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> ROBOT_RADIUS<span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>r_laser <span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    repulsion_resultant_x <span class="token operator">+</span><span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> scan_filtered<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>r_laser<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    repulsion_resultant_y <span class="token operator">+</span><span class="token operator">=</span> <span class="token operator">-</span>REPULSE_FORCE <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>scan_filtered<span class="token punctuation">.</span>angle_min <span class="token operator">+</span> scan_filtered<span class="token punctuation">.</span>angle_increment <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">pow</span><span class="token punctuation">(</span>r_laser<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<p>上一段代码是有几个错误的，包括之前说的计算出theta为世界坐标系中的弧度值，这里使用机器人坐标系的角度分解是错误的。但是我想说的重点在斥力计算的部分：这里代码含义为只要在机器人探测范围内有效的障碍物的粒子点都参与斥力计算，而且斥力是加和（+=）的，导致在机器人距离物体很近的时候，粒子很多，每个粒子都提供斥力，累和数值很大，所以后之后绝得将其修改为了一个粒子的影响。<br>这个问题是在进行引力、斥力和合力的可视化之后才发现的，可视化的部分代码如下：将力的数据处理成PoseStamped格式进行发布，只显示方向，大小从topic输出的数值来看。pose中最重要的方向orientation，将theta转化为四元数输出，同理对引力theta_goal、斥力atan2(repulsion_resultant_y, repulsion_resultant_x)也是一样的做法。</p>
+<pre class=" language-cpp"><code class="language-cpp">std_msgs<span class="token operator">::</span>Float32 force_msg<span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> force_x<span class="token punctuation">;</span>
+force_x_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> force_y<span class="token punctuation">;</span>
+force_y_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_msg<span class="token punctuation">.</span>data <span class="token operator">=</span> radian_speed<span class="token punctuation">;</span>
+w_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+geometry_msgs<span class="token operator">::</span>PoseStamped force_dir_msg<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> <span class="token string">"map"</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>header<span class="token punctuation">.</span>stamp <span class="token operator">=</span> ros<span class="token operator">::</span>Time<span class="token operator">::</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> pose_<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> theta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> theta_goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+att_force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 斥力有才发布</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>repulsion_resultant_y <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">||</span> repulsion_resultant_x <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  force_dir_msg<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation <span class="token operator">=</span> tf<span class="token operator">::</span><span class="token function">createQuaternionMsgFromRollPitchYaw</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">atan2</span><span class="token punctuation">(</span>repulsion_resultant_y<span class="token punctuation">,</span> repulsion_resultant_x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  rep_force_direction_pub_<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>force_dir_msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<p>在rviz中展示的效果如下：<br><img src="https://cdn.jsdelivr.net/gh/zhangyuanes/thirdPic/img/apf-rviz.jpg" alt="apf-rviz"></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhangyuanes.github.io" rel="external nofollow noreferrer">zhangyuanes</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhangyuanes.github.io/2020/09/14/ji-lu/ros/apf-fang-fa-local-planner-cai-keng/">https://zhangyuanes.github.io/2020/09/14/ji-lu/ros/apf-fang-fa-local-planner-cai-keng/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://zhangyuanes.github.io" target="_blank">zhangyuanes</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ROS/">
+                                    <span class="chip bg-color">ROS</span>
+                                </a>
+                            
+                                <a href="/tags/SLAM/">
+                                    <span class="chip bg-color">SLAM</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BA%BA%E5%B7%A5%E5%8A%BF%E5%9C%BA%E6%B3%95/">
+                                    <span class="chip bg-color">人工势场法</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B1%80%E9%83%A8%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">局部路径规划</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'iwXMVlV64uXP0UysA0KefKK2-gzGzoHsz',
+        appKey: 'IVrAAkOjNC2AEcA3Nz1NcbJL',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/09/16/ji-lu/ros/navigation-bao-can-shu-pei-zhi-yu-yuan-li-lue-du/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="navigation包参数配置与原理略读">
+                        
+                        <span class="card-title">navigation包参数配置与原理略读</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Navigation包参数调优ROS 导航功能调优指南
+DWAPlanner原理略读动态窗口法
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ROS/">
+                        <span class="chip bg-color">ROS</span>
+                    </a>
+                    
+                    <a href="/tags/SLAM/">
+                        <span class="chip bg-color">SLAM</span>
+                    </a>
+                    
+                    <a href="/tags/navigation/">
+                        <span class="chip bg-color">navigation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/09/11/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Hello World to Hexo">
+                        
+                        <span class="card-title">Hello World to Hexo</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            说在前面我的blog很大程度上不算blog，算是个整合贴。我的blog的流程一般是这样的：
+遇到一个实际问题，或者从完全不了解到初步入门，我会保留自己在解决这个问题的浏览器历史搜索记录（请务必科学上网）、大致流程、特殊问题和解决方案。
+一般
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    博客搭建
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Gitpage/">
+                        <span class="chip bg-color">Gitpage</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: zhangyuanes<br />'
+            + '文章作者: zhangyuanes<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="752365737"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='one'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="https://zhangyuanes.github.io" target="_blank">zhangyuanes</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">102.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "5";
+                    var startDate = "6";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/zhangyuanes" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zhangyuanes@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1787948156" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1787948156" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
