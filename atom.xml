@@ -6,7 +6,7 @@
   <link href="https://zhangyuanes.github.io/atom.xml" rel="self"/>
   
   <link href="https://zhangyuanes.github.io/"/>
-  <updated>2022-09-14T13:03:16.574Z</updated>
+  <updated>2022-12-07T12:45:35.658Z</updated>
   <id>https://zhangyuanes.github.io/</id>
   
   <author>
@@ -17,11 +17,153 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Shell脚本自动化基础</title>
+    <link href="https://zhangyuanes.github.io/2022/12/07/record/ren-ren-du-shi-jia-gou-shi/"/>
+    <id>https://zhangyuanes.github.io/2022/12/07/record/ren-ren-du-shi-jia-gou-shi/</id>
+    <published>2022-12-07T12:18:00.000Z</published>
+    <updated>2022-12-07T12:45:35.658Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;人人都是架构师&quot;&gt;&lt;a href=&quot;#人人都是架构师&quot; class=&quot;headerlink&quot; title=&quot;人人都是架构师&quot;&gt;&lt;/a&gt;人人都是架构师&lt;/h1&gt;&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/categories/Record/"/>
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/tags/Record/"/>
+    
+    <category term="架构" scheme="https://zhangyuanes.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>目录 Index</title>
+    <link href="https://zhangyuanes.github.io/2022/09/28/record/mu-lu/"/>
+    <id>https://zhangyuanes.github.io/2022/09/28/record/mu-lu/</id>
+    <published>2022-09-28T02:42:00.000Z</published>
+    <updated>2022-10-08T09:02:36.029Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;序&quot;&gt;&lt;a href=&quot;#序&quot; class=&quot;headerlink&quot; title=&quot;序&quot;&gt;&lt;/a&gt;序&lt;/h1&gt;&lt;p&gt;本页面仅作目录占位，本身不含有任何内容，从各个方向📝记录自己阅读的内容。&lt;/p&gt;
+&lt;h1 id=&quot;计算机原理&quot;&gt;&lt;a href=&quot;#计算机原理&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/categories/Record/"/>
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/tags/Record/"/>
+    
+    <category term="目录" scheme="https://zhangyuanes.github.io/tags/%E7%9B%AE%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码阅读笔记</title>
+    <link href="https://zhangyuanes.github.io/2022/09/22/record/dai-ma-yue-du-bi-ji/"/>
+    <id>https://zhangyuanes.github.io/2022/09/22/record/dai-ma-yue-du-bi-ji/</id>
+    <published>2022-09-22T09:55:00.000Z</published>
+    <updated>2022-10-10T07:00:29.230Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;从-h开始&quot;&gt;&lt;a href=&quot;#从-h开始&quot; class=&quot;headerlink&quot; title=&quot;从.h开始&quot;&gt;&lt;/a&gt;从.h开始&lt;/h1&gt;&lt;h2 id=&quot;被忽视的-define&quot;&gt;&lt;a href=&quot;#被忽视的-define&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/categories/Record/"/>
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/tags/Record/"/>
+    
+    <category term="代码阅读" scheme="https://zhangyuanes.github.io/tags/%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="笔记" scheme="https://zhangyuanes.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>框架代码阅读</title>
+    <link href="https://zhangyuanes.github.io/2022/09/21/record/kuang-jia-dai-ma-yue-du/"/>
+    <id>https://zhangyuanes.github.io/2022/09/21/record/kuang-jia-dai-ma-yue-du/</id>
+    <published>2022-09-21T15:52:00.000Z</published>
+    <updated>2022-09-22T09:56:59.114Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;First&quot;&gt;&lt;a href=&quot;#First&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/categories/Record/"/>
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/tags/Record/"/>
+    
+    <category term="代码阅读" scheme="https://zhangyuanes.github.io/tags/%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="框架" scheme="https://zhangyuanes.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本自动化基础</title>
+    <link href="https://zhangyuanes.github.io/2022/09/17/record/shell-jiao-ben-zi-dong-hua-ji-chu/"/>
+    <id>https://zhangyuanes.github.io/2022/09/17/record/shell-jiao-ben-zi-dong-hua-ji-chu/</id>
+    <published>2022-09-17T06:56:00.000Z</published>
+    <updated>2022-10-10T06:59:07.438Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;shell介绍&quot;&gt;&lt;a href=&quot;#shell介绍&quot; class=&quot;headerlink&quot; title=&quot;shell介绍&quot;&gt;&lt;/a&gt;shell介绍&lt;/h2&gt;&lt;h3 id=&quot;Introduce&quot;&gt;&lt;a href=&quot;#Introduce&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/categories/Record/"/>
+    
+    
+    <category term="Record" scheme="https://zhangyuanes.github.io/tags/Record/"/>
+    
+    <category term="Linux" scheme="https://zhangyuanes.github.io/tags/Linux/"/>
+    
+    <category term="Shell" scheme="https://zhangyuanes.github.io/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
     <title>上线流程与规范</title>
     <link href="https://zhangyuanes.github.io/2022/09/14/record/shang-xian-gui-fan-yu-liu-cheng/"/>
     <id>https://zhangyuanes.github.io/2022/09/14/record/shang-xian-gui-fan-yu-liu-cheng/</id>
     <published>2022-09-14T12:59:00.000Z</published>
-    <updated>2022-09-14T13:03:16.574Z</updated>
+    <updated>2022-09-14T13:05:44.989Z</updated>
     
     
       
@@ -372,33 +514,6 @@
     <category term="人工势场法" scheme="https://zhangyuanes.github.io/tags/%E4%BA%BA%E5%B7%A5%E5%8A%BF%E5%9C%BA%E6%B3%95/"/>
     
     <category term="局部路径规划" scheme="https://zhangyuanes.github.io/tags/%E5%B1%80%E9%83%A8%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World to Hexo</title>
-    <link href="https://zhangyuanes.github.io/2020/09/11/hello-world/"/>
-    <id>https://zhangyuanes.github.io/2020/09/11/hello-world/</id>
-    <published>2020-09-11T12:26:00.000Z</published>
-    <updated>2022-09-14T12:35:56.543Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;说在前面&quot;&gt;&lt;a href=&quot;#说在前面&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="博客搭建" scheme="https://zhangyuanes.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-    
-    <category term="Hexo" scheme="https://zhangyuanes.github.io/tags/Hexo/"/>
-    
-    <category term="Gitpage" scheme="https://zhangyuanes.github.io/tags/Gitpage/"/>
     
   </entry>
   

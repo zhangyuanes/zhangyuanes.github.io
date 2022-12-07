@@ -4,6 +4,147 @@
   
     
     <entry>
+      <title>Shell脚本自动化基础</title>
+      <link href="/2022/12/07/record/ren-ren-du-shi-jia-gou-shi/"/>
+      <url>/2022/12/07/record/ren-ren-du-shi-jia-gou-shi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="人人都是架构师"><a href="#人人都是架构师" class="headerlink" title="人人都是架构师"></a>人人都是架构师</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>发展阶段需要“人人都是架构师”，每个人的成长需要“架构师思维”。</p><ul><li>商业模式探索的初期，需要快速迭代、验证模式，所以纵向发展是效率最高的模式。</li><li>在当下的快速发展期，在一定的确定性下，提升系统的效率比单点优化更加重要。</li></ul><p>补充：纵向发展：或者叫做纵深发展，指在某一个方向做到Master级别，一骑绝尘。</p><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>“架构师”不是头衔，而是一种能力。每个工程师都应该具备一定的架构能力。</p><p>每个人在编程中，小到开发一个函数，大到设计一个模块、搭建一个系统，都可以成为架构师。</p><p>让每个人写出的代码有更长的生命力，更好的适应性，服务更多的业务和用户。</p><p>补充：只要是一种能力，就有训练和培养的方法，并且可以通过不断地练习和重复加强记忆。</p><h2 id="关键要素"><a href="#关键要素" class="headerlink" title="关键要素"></a>关键要素</h2><p>前提：好的架构一定是简洁的，而不是复杂的。</p><ul><li>系统观： <strong>洞察系统的本质要素</strong>，厘清要素之间的关系，以及制定相应策略的能力。<strong>高内聚、低耦合</strong>的架构能力，将一个大的系统切分成多个低耦合的子模块的能力。从立烟囱一般的需求交付到合理的模块设计，从仅仅考虑眼前的应对到面向未来的设计。</li><li>从局部到整体： 以工程思维 <strong>全面理解业务需求</strong>。基于技术领域模型和业务特征做抽象简化，在可预见的周期内扩展广度和深度。在系统生命周期内不断演进。洞察细节，整体设计。考虑差异性之前，要最大可能性地找到共性。</li><li>评价指标： <strong>驱动自身的迭代</strong>。做完一个内容，不是结束而是意味着自身架构设计迭代的开始。不是开发一个项目，而是迭代一个系统。</li><li>成长思维： <strong>面向所有人</strong>。对自己工程/算法的基本能力上有高要求。有改变的决心和有效的方法，保持学习，突破自我。</li></ul><h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><ul><li>架构设计的准则与共识。<strong>Leader要和团队深度交流</strong>，不遗余力的培养成员的架构能力，不断探讨系统的<strong>边界</strong>、<strong>模型抽象</strong>、<strong>模块设计</strong>、<strong>流程抽象</strong>是否合理，设计<strong>背后的思考与理念</strong>是什么，不断碰撞与讨论，leader和团队都会有所成长。</li><li>Hands-on 写代码 Zoom in 去验证。<strong>Leader要hands-on coding</strong>，参与核心业务逻辑的编码工作，深入代码细节中去做架构。无谓的讨论是低效的，验证架构师否合理的方式，就是结合业务场景，写代码去验证，设计是否合理，是否优雅，在coding过程中便能获得很好的反馈。</li><li>流程机制。<strong>嵌入到流程机制</strong>，需求在实现前必须有技术方案、架构设计讨论、文档产出。从边界不清，责任模糊的认为复杂，到通过结构设计，流程清晰带来的“天然简单”。</li></ul><p>补充： 在设计时，询问自己为什么要这样设计，是考虑了什么优点，缺点在什么地方；有没有其他方案能尝试，评估过程和结论是什么；此方法实现的过程是否合理，有无隐患。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Record </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Record </tag>
+            
+            <tag> 架构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>目录 Index</title>
+      <link href="/2022/09/28/record/mu-lu/"/>
+      <url>/2022/09/28/record/mu-lu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>本页面仅作目录占位，本身不含有任何内容，从各个方向📝记录自己阅读的内容。</p><h1 id="计算机原理"><a href="#计算机原理" class="headerlink" title="计算机原理"></a>计算机原理</h1><h2 id="内存-Memory"><a href="#内存-Memory" class="headerlink" title="内存 Memory"></a>内存 Memory</h2><h3 id="高性能内存分配器-jemalloc"><a href="#高性能内存分配器-jemalloc" class="headerlink" title="高性能内存分配器 jemalloc"></a>高性能内存分配器 jemalloc</h3><h1 id="代码组织-amp-编译与运行"><a href="#代码组织-amp-编译与运行" class="headerlink" title="代码组织&amp;编译与运行"></a>代码组织&amp;编译与运行</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><h3 id="依赖安装工具-abxp"><a href="#依赖安装工具-abxp" class="headerlink" title="依赖安装工具 abxp"></a>依赖安装工具 abxp</h3><h3 id="编译框架-Scons"><a href="#编译框架-Scons" class="headerlink" title="编译框架 Scons"></a>编译框架 Scons</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Record </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Record </tag>
+            
+            <tag> 目录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>代码阅读笔记</title>
+      <link href="/2022/09/22/record/dai-ma-yue-du-bi-ji/"/>
+      <url>/2022/09/22/record/dai-ma-yue-du-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<h1 id="从-h开始"><a href="#从-h开始" class="headerlink" title="从.h开始"></a>从.h开始</h1><h2 id="被忽视的-define"><a href="#被忽视的-define" class="headerlink" title="被忽视的#define"></a>被忽视的#define</h2><p>#define 在学习过程中被诟病没有类型检测，会出现检查不出来的问题，因为只做文本替换不做类型判断，容易出现问题。但是在阅读代码时候，发现#define在简化代码量，增加可读性方面作用很大，能很大程度上简化代码的书写。</p><p>在名称上，宏替换的所有指定字串，都使用大写字母+下划线连接符连接，这样在命名规范上保持统一有助于让代码可读性更好。</p><p>例如：<br>（1）对命名空间的简化</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_BEGIN namespace amap_sp &amp;#123;</span><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_END &amp;#125;</span></code></pre><p>（2）对嵌套命名空间的简化，传入使用的子空间名称</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_BEGIN_NAMESPACE(x) namespace amap_sp &amp;#123; namespace x &amp;#123;</span><span class="token macro property">#<span class="token directive keyword">define</span>  AMAP_SP_END_NAMESPCAE(x) &amp;#125; &amp;#125;</span></code></pre><p>（3）对使用命名空间的简化，使用define时候需要注意此部分是简单的文本替换，需要特别注意文本内容，比如分号</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_USE_NAMESPACE(x) using namespace amap_sp::x</span><span class="token macro property">#<span class="token directive keyword">define</span>  AMAP_SP_USE_SPACEROOT using namespace amap_sp;</span></code></pre><p>（4）对命名空间中的内容进行简化</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_NS(x) amap_sp::x</span><span class="token macro property">#<span class="token directive keyword">define</span> NS_STD using namespace std;</span></code></pre><p>（5）对智能指针的简化，define中的双井号代表直接连接两个部分，其中涉及字串的转移，所以需要使用连接符号进行转义</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> AMAP_SP_TYPEDEF_PTR(x) typedef std::shared_ptr&lt;x> x##Ptr </span></code></pre><p>（6）对大字串的简化，例如函数体，使用define可以简化很多同质复写，简化代码量，提高代码可读性。此时的会出现换行保证可读性，但是其本质是一行的，需要用\符号表示换行连接</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> REGISTER_FACTORY(x)          \    extern "C"&amp;#123;                      \    ModuleFactory* createFactory() &amp;#123; \        return new x();              \    &amp;#125;;                               \    &amp;#125;                                \                                     \    extern "C"&amp;#123;                      \    void destroyFactory(ModuleFactory* factory) &amp;#123;\        if (factory != NULL) &amp;#123;                   \            delete factory;                      \        &amp;#125;                                        \    &amp;#125;;                                           \    &amp;#125;                                            \</span></code></pre><p>特别的，在使用函数体时候，可以像书写正常函数一样，指定若干形参，后面的代码段中作为参数使用。</p><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> SP_ERROECODE 505</span><span class="token macro property">#<span class="token directive keyword">define</span> GET_CONTEXT_SHAREDATA(contextname, type, kname, vname) \    type* vname = NULL; \    if (contextname->hasShareDate(kname)) &amp;#123;\        vname = contextname->getShareData&lt;type>(kname);\        if (NULL == vname) &amp;#123;\            contextname->setResult(SP_ERRORCODE, kname " null!");\            return ProcessResult(ProcessResult::CHAIN_EXIT);\        &amp;#125;\    &amp;#125;</span>\</code></pre><p>上述代码段中，将一段固定流程的函数写成了模板的格式，使用define直接进行参数替换和字串替换</p><p>（7）对常用数据类型的简化，例如常用的string类型的key-value，set，vector，这些数据结构类型表示也可以用define进行简化。</p><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> std<span class="token operator">::</span>map<span class="token operator">&lt;</span>std<span class="token operator">::</span>string<span class="token punctuation">,</span> std<span class="token operator">::</span>string<span class="token operator">></span> KeyValueMap<span class="token punctuation">;</span><span class="token keyword">typedef</span> std<span class="token operator">::</span>set<span class="token operator">&lt;</span>std<span class="token operator">::</span>string<span class="token operator">></span> StringSet<span class="token punctuation">;</span><span class="token keyword">typedef</span> std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>std<span class="token operator">::</span>string<span class="token operator">></span> StringVect<span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Record </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Record </tag>
+            
+            <tag> 代码阅读 </tag>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>框架代码阅读</title>
+      <link href="/2022/09/21/record/kuang-jia-dai-ma-yue-du/"/>
+      <url>/2022/09/21/record/kuang-jia-dai-ma-yue-du/</url>
+      
+        <content type="html"><![CDATA[<h2 id="First"><a href="#First" class="headerlink" title="First"></a>First</h2><p>框架之所以能称之为框架，一定是在架构设计层面解决了一些问题：例如抽象了开发流程，定制了运行流程，结合设计模式和业务场景做了精巧的设计。</p><h2 id="如何阅读代码"><a href="#如何阅读代码" class="headerlink" title="如何阅读代码"></a>如何阅读代码</h2><p>1、 弄清项目的框架结构和各个项目模块的功能（输入什么，处理以后输出什么），把握整体流程。</p><p>工具： Ant工具。</p><p>2、 参照源代码和对应文档及业务知识，掌握各个项目模块的主流程，从每个模块的main函数开始，按照顺序列出所用的函数，试着画流程图。<br>注意在此处只列出函数的输入和输出，不关心函数内部具体的实现。</p><p>工具： UltraEdit32.</p><p>3、在进一步熟悉各个项目模块的主流程，要弄清各个自定义函数的具体实现。</p><p>4、在每一步都要做好源代码阅读笔记，总结方法和技巧。每个项目的源代码阅读要多读几遍，书读百遍，其意自现。</p><p>注意：</p><p>看一看master是如何做的。一般，要初步了解人家的框架模型，（这可以通过追踪一些核心函数/类得到一些印象，或者开发文档等）；进一步，找到核心<code>数据结构</code>，核心数据结构会直接影响代码的质量。事实上，当你完全读懂它的数据结构时，在来阅读源代码，就是水到渠成的事了。</p><ul><li>阅读源代码的说明文档，比如README, 作者写的非常的详细，仔细读过之后，在阅读程序的时候往往能够从README文件中找到相应的说明，从而简化了源程序的阅读工作。</li><li>如果源代码有文档目录，一般为doc或者docs， 最好也在阅读源程序之前仔细阅读，因为这些文档同样起了很好的说明注释作用。</li><li>从makefile文件入手，分析源代码的层次结构，找出哪个是主程序，哪些是函数包。这对于快速把握程序结构有很大帮助。</li><li>从main函数入手，一步一步往下阅读，遇到可以猜测出意思来的简单的函数，可以跳过。但是一定要注意程序中使用的全局变量（如果是C程序），可以把关键的数据结构说明拷贝到一个文本编辑器中以便随时查找。</li><li>分析函数包（针对C程序），要注意哪些是全局函数，哪些是内部使用的函数，注意extern关键字。对于变量，也需要同样注意。先分析清楚内部函数，再来分析外部函数，因为内部函数肯定是在外部函数中被调用的。</li><li>需要说明的是数据结构的重要性：对于一个C程序来说，所有的函数都是在操作同一些数据，而由于没有较好的封装性，这些数据可能出现在程序的任何地方，被任何函数修改，所以一定要注意这些数据的定义和意义，也要注意是哪些函数在对它们进行操作，做了哪些改变。</li><li>在阅读程序的同时，最好能够把程序存入到cvs之类的版本控制器中去，在需要的时候可以对源代码做一些修改试验，因为动手修改是比仅仅是阅读要好得多的读程序的方法。在你修改运行程序的时候，可以从cvs中把原来的代码调出来与你改动的部分进行比较(diff命令), 可以看出一些源代码的优缺点并且能够实际的练习自己的编程技术。</li><li>阅读程序的同时，要注意一些小工具的使用，能够提高速度，比如vi中的查找功能，模式匹配查找，做标记，还有grep，find这两个最强大最常用的文本搜索工具的使用。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Record </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Record </tag>
+            
+            <tag> 代码阅读 </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shell脚本自动化基础</title>
+      <link href="/2022/09/17/record/shell-jiao-ben-zi-dong-hua-ji-chu/"/>
+      <url>/2022/09/17/record/shell-jiao-ben-zi-dong-hua-ji-chu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="shell介绍"><a href="#shell介绍" class="headerlink" title="shell介绍"></a>shell介绍</h2><h3 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h3><p>shell是一个程序，是用户沟通linux内核的桥梁，既是一种命令语言，也是解释性的语言。</p><h3 id="shell功能"><a href="#shell功能" class="headerlink" title="shell功能"></a>shell功能</h3><ul><li>命令行解释</li><li>启动程序</li><li>输入输出的重定向</li><li>管道连接</li><li>文件名置换</li><li>变量维护</li><li>环境控制</li><li>shell编程</li></ul><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>shell脚本就是将完成一个任务的所有命令按照执行先后的顺序，自上而下写入一个到一个文本文件中，然后赋予其执行权限。</p><p>如果在一个机器下可以执行，更换环境、更换场景是否能同时满足要求。</p><h3 id="书写规范"><a href="#书写规范" class="headerlink" title="书写规范"></a>书写规范</h3><p>命名：建议命名成有含义的脚本名称，最好以<code>.sh</code>命名。</p><p>解释器：书写在shell脚本的第一行，使用<code>#!</code>进行解释，跟上解释器的路径。</p><p>注意在真正的执行脚本中，执行语句不要使用任何的中文。</p><p>文件说明：书写清楚脚本的作者，创建时间，版本，脚本功能。</p><p>脚本组成： </p><ul><li>解释环境： <code>#!/usr/bin/bash</code></li><li>注释说明</li><li>执行代码</li></ul><h3 id="运行方法"><a href="#运行方法" class="headerlink" title="运行方法"></a>运行方法</h3><p>脚本的执行需要一定的权限，当给脚本文件赋予执行权限之后，该脚本就可以运行。或者指定解释器来运行。</p><h3 id="shell脚本中的符号"><a href="#shell脚本中的符号" class="headerlink" title="shell脚本中的符号"></a>shell脚本中的符号</h3><p>shell中的特殊符号和正则表达式中的符号有冲突的地方，所以要进行区分。</p><p>特殊符号：</p><ul><li><code>~</code> 表示用户目录，使用 <code>cd ~</code>进入用户目录中，<code>cd -</code>回到上一次目录中</li><li><code>!</code> 表示执行历史命令，使用 <code>!!</code> 执行上一条命令，使用<code>history</code>可以查看到所有的执行命令，使用感叹号加行号就可以执行</li><li><code>$</code> 表示变量中取内容符号</li><li><code>+ - * / %</code> 表示对应的数学运算内容</li><li><code>*</code> shell中通配符，匹配所有</li><li><code>?</code> shell中通配符，匹配 除回车以外的字符</li><li><code>;</code> shell可以在一行中执行多条命令，命令之间用分号隔开</li><li><code>|</code> 管道符号，上一条命令的输出作为下一条命令的输入</li><li><code>\</code> 转义字符，对于有特殊含义的字符在shell如果要当作普通字符处理需要使用转义字符，转义字符本身也要转义</li><li>``` 反引号，在命令中执行命令，反引号框选内部命令</li><li><code>&#39;</code> 单引号，脚本中的字符串需要用单引号，单引号中不解释变量</li><li><code>&quot;</code> 双引号，脚本中出现的字符串可以用双引号引起来</li></ul><h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>参考管道符号 <code>|</code> 将上一条命令的输出作为下一条命令的输入</p><h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><ul><li><code>&gt;</code> 重定向输入，覆盖源数据</li><li><code>&gt;&gt;</code> 重定向追加输入，在原始数据的末尾添加</li><li><code>&lt;</code> 重定向输出，例如 <code>wc -l &lt; /etc/passwd</code></li><li><code>&lt;&lt;</code> 重定向追加输出，例如 <code>fdisk /dev/sdb &lt;&lt; EOF  ...   EOF</code></li></ul><h3 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h3><p>expr 命令，只能做整数运算，格式比较古板，需要注意空格和必要的转义。例如<code>expr 1 + 2 &amp;&gt;/dev/null; echo $?</code>，其中如果不需要打印输出则将结果重定向到<code>&amp;&gt;/dev/null</code>，其中 <code>$?</code> 判断上一条语句是否执行成功，如果成功则返回的为 0 ，不成功返回其他值。</p><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 上一条命令是否不等于0</span><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne 0 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>    <span class="token keyword">echo</span> <span class="token string">"failed"</span><span class="token keyword">else</span>    <span class="token keyword">echo</span> <span class="token string">"succeed"</span><span class="token keyword">fi</span><span class="token comment" spellcheck="true"># 上一条命令状态是否等于0</span><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq 0 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>    <span class="token keyword">echo</span> <span class="token string">"succeed"</span><span class="token keyword">else</span>    <span class="token keyword">echo</span> <span class="token string">"failed"</span><span class="token keyword">fi</span></code></pre><p>bc 命令，例如 <code>echo &quot;scale=2;100/3&quot; | bc</code>，指定小数点位数为2</p><p><code>$(())</code>美元+括号可以直接进行运算</p><h3 id="脚本退出"><a href="#脚本退出" class="headerlink" title="脚本退出"></a>脚本退出</h3><p>使用命令<code>exit num</code>退出脚本，<code>num</code>是一个整数，代表返回值，方便其他程序获得其执行结果</p><h2 id="格式化输出Output"><a href="#格式化输出Output" class="headerlink" title="格式化输出Output"></a>格式化输出Output</h2><p>一个程序需要有<code>0</code>个或者<code>以上</code>输入，<code>1</code>个或者<code>更多</code>输出。</p><h3 id="echo-语法"><a href="#echo-语法" class="headerlink" title="echo 语法"></a>echo 语法</h3><p>功能：将内容输出到默认显示设备</p><p>语法： <code>echo [-ne][字符串]</code></p><p>echo会将输入的字符串送往标准输出，输出的字符串间以空白字符隔开，并在最后加上换行号</p><h3 id="颜色与字体"><a href="#颜色与字体" class="headerlink" title="颜色与字体"></a>颜色与字体</h3><h2 id="格式化输入Input"><a href="#格式化输入Input" class="headerlink" title="格式化输入Input"></a>格式化输入Input</h2><h3 id="read命令"><a href="#read命令" class="headerlink" title="read命令"></a>read命令</h3><h2 id="shell变量"><a href="#shell变量" class="headerlink" title="shell变量"></a>shell变量</h2><h3 id="变量介绍"><a href="#变量介绍" class="headerlink" title="变量介绍"></a>变量介绍</h3><h3 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h3><h3 id="变量管理"><a href="#变量管理" class="headerlink" title="变量管理"></a>变量管理</h3><h2 id="shell数组"><a href="#shell数组" class="headerlink" title="shell数组"></a>shell数组</h2><h3 id="数组介绍"><a href="#数组介绍" class="headerlink" title="数组介绍"></a>数组介绍</h3><h3 id="默认数组"><a href="#默认数组" class="headerlink" title="默认数组"></a>默认数组</h3><h3 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h3><h2 id="shell运算"><a href="#shell运算" class="headerlink" title="shell运算"></a>shell运算</h2><h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><h3 id="数学运算-1"><a href="#数学运算-1" class="headerlink" title="数学运算"></a>数学运算</h3><h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a>比较运算</h3><h3 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h3><h3 id="文件类型比较"><a href="#文件类型比较" class="headerlink" title="文件类型比较"></a>文件类型比较</h3><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><ul><li>-e 判断对象是否存在</li><li>-d 判断对象是否存在，并且为目录</li><li>-f 判断对象是否存在，并且为常规文件</li><li>-L 判断对象是否存在，并且为符号链接</li><li>-h 判断对象是否存在，并且为软链接</li><li>-s 判断对象是否存在，并且长度不为0</li><li>-r 判断对象是否存在，并且可读</li><li>-w 判断对象是否存在，并且可写</li><li>-x 判断对象是否存在，并且可执行</li><li>-O 判断对象是否存在，并且属于当前用户</li><li>-G 判断对象是否存在，并且属于当前用户组</li><li>-nt 判断file1是否比file2新  [ “/data/file1” -nt “/data/file2” ]</li><li>-ot 判断file1是否比file2旧  [ “/data/file1” -ot “/data/file2” ]</li></ul><ul><li>-eq           //等于</li><li>-ne           //不等于</li><li>-gt            //大于</li><li>-lt            //小于</li><li>-ge            //大于等于</li><li>-le            //小于等于</li></ul><p>在if中多次判断：</p><ul><li>||                    单方成立；</li><li>&amp;&amp;                   双方都成立表达式。<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3></li></ul><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><h3 id="until"><a href="#until" class="headerlink" title="until"></a>until</h3><h3 id="case"><a href="#case" class="headerlink" title="case"></a>case</h3><h2 id="shell函数"><a href="#shell函数" class="headerlink" title="shell函数"></a>shell函数</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><h3 id="POSIX字符"><a href="#POSIX字符" class="headerlink" title="POSIX字符"></a>POSIX字符</h3><h2 id="shell文件操作"><a href="#shell文件操作" class="headerlink" title="shell文件操作"></a>shell文件操作</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><h3 id="sed命令"><a href="#sed命令" class="headerlink" title="sed命令"></a>sed命令</h3><h3 id="sed小技巧"><a href="#sed小技巧" class="headerlink" title="sed小技巧"></a>sed小技巧</h3><h2 id="shell对输出流的处理"><a href="#shell对输出流的处理" class="headerlink" title="shell对输出流的处理"></a>shell对输出流的处理</h2><h3 id="awk-介绍"><a href="#awk-介绍" class="headerlink" title="awk 介绍"></a>awk 介绍</h3><h3 id="awk-语法"><a href="#awk-语法" class="headerlink" title="awk 语法"></a>awk 语法</h3><h3 id="awk高级用法"><a href="#awk高级用法" class="headerlink" title="awk高级用法"></a>awk高级用法</h3><h3 id="awk-技巧"><a href="#awk-技巧" class="headerlink" title="awk 技巧"></a>awk 技巧</h3><h2 id="shell-案例"><a href="#shell-案例" class="headerlink" title="shell 案例"></a>shell 案例</h2><p>离线cache shell书写需求和优化。</p><h3 id="停止系统中所有的关键字为“wings-worker”的进程"><a href="#停止系统中所有的关键字为“wings-worker”的进程" class="headerlink" title="停止系统中所有的关键字为“wings_worker”的进程"></a>停止系统中所有的关键字为“wings_worker”的进程</h3><p>此需求中有几个关键命令： 查看系统进程，筛选含有关键字 wings_worker的进程(同时过滤掉grep本身)，获取其进程id，使用kill命令停止</p><pre class=" language-bash"><code class="language-bash"><span class="token function">ps</span> -auxf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"wings_worker"</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token function">grep</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$2</span>&amp;#125;'</span> <span class="token operator">|</span> xarge <span class="token function">kill</span> -9</code></pre><p>其中ps命令查看的每一行结构如下：其中进程ID为第二个元素，使用awk命令可以获取。</p><pre><code>USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMANDhault.wk  98448  1.4 21.8 74171804 50265140 pts/1194 Sl Apr27 3486:19      |   \_ ./_external/usr/local/bin/wings_wo997 -hp 40998 -ap 40999 -m local -a sp-wings -c config -v 1.0 -s sp-wings --monitorPort 40088 -l config/wings_alog.ca.json -dv 0USER：该 process 属于那个使用者账号的？PID ：该 process 的ID。%CPU：该 process 使用掉的 CPU 资源百分比；%MEM：该 process 所占用的物理内存百分比；VSZ ：该 process 使用掉的虚拟内存量 (Kbytes)RSS ：该 process 占用的固定的内存量 (Kbytes)TTY ：该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。STAT：该程序目前的状态，主要的状态有：R ：该程序目前正在运作，或者是可被运作；S ：该程序目前正在睡眠当中 (可说是 idle 状态啦！)，但可被某些讯号 (signal) 唤醒。T ：该程序目前正在侦测或者是停止了；Z ：该程序应该已经终止，但是其父程序却无法正常的终止他，造成 zombie (疆尸) 程序的状态START：该 process 被触发启动的时间；TIME ：该 process 实际使用 CPU 运作的时间。COMMAND：该程序的实际指令为何？补充进程STAT状态：D 无法中断的休眠状态（通常 IO 的进程）； R 正在运行，在可中断队列中； S 处于休眠状态，静止状态； T 停止或被追踪，暂停执行； W 进入内存交换（从内核2.6开始无效）； X 死掉的进程； Z 僵尸进程不存在但暂时无法消除；W: 没有足够的记忆体分页可分配WCHAN 正在等待的进程资源；&lt;: 高优先级进程N: 低优先序进程L: 有记忆体分页分配并锁在记忆体内 (即时系统或捱A I/O)，即,有些页被锁进内存s 进程的领导者（在它之下有子进程）； l 多进程的（使用 CLONE_THREAD, 类似 NPTL pthreads）； + 位于后台的进程组；</code></pre><p>xargs 可以将<strong>管道</strong>或<strong>标准输入</strong>（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br>-i 或者是-I，这得看linux支持了，将xargs的每项名称，一般是一行一行赋值给 {}，可以用 {} 代替。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Record </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Record </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>上线流程与规范</title>
       <link href="/2022/09/14/record/shang-xian-gui-fan-yu-liu-cheng/"/>
       <url>/2022/09/14/record/shang-xian-gui-fan-yu-liu-cheng/</url>
